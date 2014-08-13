@@ -1,0 +1,13 @@
+#Por temas de SEO, no es recomendable indexar un contenido dos veces, una con www y otra sin www.
+
+#Añadiendo el siguiente código a nuestro archivo .htaccess podremoseliminar las www de la URL del sitio web, redireccionando cualquier url con la www a la versión con la no www. Y también podremos realizarlo a la inversa, forzando nuestra url para que siempre aparezcan las www, redireccionando cualquier url sin www a la versión con www.
+
+#Quitar las www de la url
+RewriteEngine On
+RewriteCond %{HTTP_HOST} !^your-site.com$ [NC]
+RewriteRule ^(.*)$ http://your-site.com/$1 [L,R=301]
+
+#Forzar las www de la url
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^your-site.com [NC]
+RewriteRule ^(.*)$ http://www.your-site.com/$1 [L,R=301]
